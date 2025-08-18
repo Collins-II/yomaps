@@ -1,103 +1,148 @@
+"use client";
+import React, { useMemo } from "react";
+import { motion } from "framer-motion";
+import {  Youtube, ChevronRight, Sparkles} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Track } from "@/data/types";
+import AudioPlayer from "@/components/audio_player";
+import ArtistsGrid from "@/components/ui/artist_grid";
+import VideoGallery from "@/components/ui/video_gallery";
 import Image from "next/image";
+import Navbar from "@/components/navbar";
+import UpcomingEvents from "@/components/upcoming-events";
+import PopularAlbums from "@/components/popular_albums";
+import BlogSection from "@/components/blog_section";
+import AwardsSection from "@/components/awards-section";
+import ContactBookings from "@/components/contact-bookings";
+import HeroSection from "@/components/hero";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const featuredTrack: Track = useMemo(
+    () => ({
+      id: "olios-demo-001",
+      title: "Midnight Skyline (Demo)",
+      artist: "Olios Records",
+      src: "https://cdn.pixabay.com/download/audio/2021/10/26/audio_7c54a05c34.mp3?filename=midnight-113508.mp3",
+      cover: "https://images.unsplash.com/photo-1554941426-e9604e34bc94?q=80&w=1200&auto=format&fit=crop",
+    }),
+    []
+  );
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="min-h-screen bg-[radial-gradient(circle_at_10%_0%,#0b0f1a_0%,#05070d_60%,#05060a_100%)] text-white">
+     <HeroSection />
+      
+      <AwardsSection />
+      <UpcomingEvents />
+      <PopularAlbums/>
+      <BlogSection/>
+      {/* CONTENT TABS 
+      <section className="mx-auto max-w-7xl px-4 pb-20">
+        <Tabs defaultValue="releases" className="mt-4">
+          <TabsList className="grid w-full grid-cols-3 bg-white/10">
+            <TabsTrigger value="releases">Releases</TabsTrigger>
+            <TabsTrigger value="videos">Videos</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="releases" className="mt-6">
+            <div className="grid gap-6 md:grid-cols-2">
+              <AudioPlayer
+                track={{
+                  id: "olios-demo-002",
+                  title: "Neon Drift (Demo)",
+                  artist: "Nyx",
+                  src: "https://cdn.pixabay.com/download/audio/2021/10/26/audio_1945d6fbfe.mp3?filename=drift-113507.mp3",
+                  cover: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200&auto=format&fit=crop",
+                }}
+              />
+              <AudioPlayer
+                track={{
+                  id: "olios-demo-003",
+                  title: "Dust & Gold (Demo)",
+                  artist: "Zito",
+                  src: "https://cdn.pixabay.com/download/audio/2021/11/09/audio_fa1a8aeaa7.mp3?filename=goldn-113901.mp3",
+                  cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1200&auto=format&fit=crop",
+                }}
+              />
+            </div>
+          </TabsContent>
+
+          <TabsContent value="videos" className="mt-6">
+            <div className="mb-4 flex items-center gap-2 text-white/70">
+              <Youtube className="h-4 w-4" />
+              <span className="text-sm">Streaming via YouTube embeds. Stats shown when API proxy is configured.</span>
+            </div>
+            <VideoGallery videoIds={videoIds} />
+          </TabsContent>
+        </Tabs>
+      </section>*/}
+      <ContactBookings />
+      {/* FOOTER */}
+      <footer className="border-t border-white/10 bg-black/40 py-10 text-white/70">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 md:flex-row">
+          <p className="text-sm">© {new Date().getFullYear()} Olios Records. All rights reserved.</p>
+          <div className="flex items-center gap-4 text-sm">
+            <a className="hover:text-white" href="#">Privacy</a>
+            <a className="hover:text-white" href="#">Terms</a>
+            <a className="hover:text-white" href="#">Contact</a>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
       </footer>
+
+      {/* -------- OPTIONAL API ROUTES (paste into files) --------
+
+      1) /app/api/youtube/route.ts  — YouTube stats proxy
+
+      import { NextResponse } from "next/server";
+
+      // Requires env: YOUTUBE_API_KEY
+      export async function GET(req: Request) {
+        const { searchParams } = new URL(req.url);
+        const ids = searchParams.getAll("id");
+        if (!ids.length) return NextResponse.json([], { status: 200 });
+        const key = process.env.YOUTUBE_API_KEY;
+        if (!key) return NextResponse.json([], { status: 200 });
+        const API = "https://www.googleapis.com/youtube/v3/videos";
+        const url = `${API}?part=snippet,statistics&id=${ids.join(",")}&key=${key}`;
+        const r = await fetch(url);
+        const json = await r.json();
+        const out = (json.items || []).map((it: any) => ({
+          videoId: it.id,
+          title: it.snippet?.title,
+          channelTitle: it.snippet?.channelTitle,
+          publishedAt: it.snippet?.publishedAt,
+          viewCount: Number(it.statistics?.viewCount || 0),
+          likeCount: Number(it.statistics?.likeCount || 0),
+          commentCount: Number(it.statistics?.commentCount || 0),
+        }));
+        return NextResponse.json(out);
+      }
+
+      2) /app/api/plays/route.ts — persist play counts (example: in-memory)
+
+      import { NextResponse } from "next/server";
+
+      // NOTE: replace with DB (Mongo, Postgres). This resets on redeploy.
+      const store = new Map<string, number>();
+
+      export async function POST(req: Request) {
+        const body = await req.json();
+        const id = String(body.trackId || "");
+        const delta = Number(body.delta || 0);
+        const prev = store.get(id) || 0;
+        store.set(id, prev + delta);
+        return NextResponse.json({ id, plays: store.get(id) || 0 });
+      }
+
+      export async function GET(req: Request) {
+        const { searchParams } = new URL(req.url);
+        const id = searchParams.get("trackId");
+        return NextResponse.json({ id, plays: (id && store.get(id)) || 0 });
+      }
+
+      ----------------------------------------------------------- */}
     </div>
   );
 }
