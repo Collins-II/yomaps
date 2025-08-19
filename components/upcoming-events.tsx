@@ -89,7 +89,7 @@ export default function UpcomingEvents() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.35, delay: idx * 0.05 }}
                 className="group flex flex-col md:flex-row items-start sm:items-center gap-4
-                           rounded-2xl border px-4 py-3 shadow-sm
+                           rounded-2xl px-4 py-3 shadow-sm
                            bg-white/10 backdrop-blur-lg
                            hover:shadow-md hover:bg-white/20 transition-colors"
               >
@@ -137,7 +137,7 @@ export default function UpcomingEvents() {
   </p>
 
   <Button className="rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-sm px-3 py-1">
-    Get Tickets
+    Tickets
   </Button>
 </div>
 

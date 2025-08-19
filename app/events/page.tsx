@@ -10,6 +10,7 @@ import SectionHero from "@/components/section_hero";
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from "lucide-react";
 import dayjs from "dayjs";
 import CalendarView from "@/components/calendar_view";
+import EventCard from "@/components/event_card";
 
 export interface Event {
   id: number;
@@ -96,38 +97,7 @@ export default function EventsPage() {
         <div className="px-6 max-w-7xl mx-auto grid lg:grid-cols-2 gap-8">
           <AnimatePresence>
             {eventsData.map(event => (
-              <motion.div
-                key={event.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
-                className="group flex flex-col lg:flex-row gap-6 bg-white/5 backdrop-blur-lg rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition"
-              >
-                <div className="relative lg:w-1/2 h-64 lg:h-auto">
-                  <Image src={event.bannerImage} alt={event.title} fill className="object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                </div>
-                <div className="flex flex-col justify-between p-6 lg:w-1/2 gap-4">
-                  <div>
-                    <h2 className="text-2xl font-bold text-white line-clamp-2">{event.title}</h2>
-                    <p className="text-white/70 mt-2">{event.description}</p>
-                    <div className="flex items-center gap-4 mt-3 text-white/80">
-                      <span className="flex items-center gap-1">
-                        <CalendarDays className="w-5 h-5 text-indigo-400" />
-                        {new Date(event.date).toLocaleDateString()}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <MapPin className="w-5 h-5 text-indigo-400" />
-                        {event.location}
-                      </span>
-                    </div>
-                  </div>
-                  <Button className="mt-4 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-sm px-4 py-2">
-                    Get Tickets ({event.priceRange})
-                  </Button>
-                </div>
-              </motion.div>
+              <EventCard event={event} key={event.id} />
             ))}
           </AnimatePresence>
         </div>

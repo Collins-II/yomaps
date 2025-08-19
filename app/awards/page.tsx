@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { Trophy, Calendar } from "lucide-react";
 import SectionHero from "@/components/section_hero";
+import Image from "next/image";
 
 interface Award {
   id: number;
@@ -21,7 +22,7 @@ const awards: Award[] = [
     title: "Best Male Artist",
     category: "Zambia Music Awards",
     year: 2023,
-    image: "/images/awards/artist2023.jpg",
+    image: "/assets/images/yomaps-02.jpg",
     description: "Recognized as the best male artist of the year in Zambia.",
   },
   {
@@ -29,7 +30,7 @@ const awards: Award[] = [
     title: "Song of the Year",
     category: "AFRIMA",
     year: 2022,
-    image: "/images/awards/song2022.jpg",
+    image: "/assets/images/yomaps-01.jpg",
     description: "Awarded for the hit single that topped African charts.",
   },
   {
@@ -37,7 +38,7 @@ const awards: Award[] = [
     title: "Album of the Year",
     category: "Zed Music Honors",
     year: 2021,
-    image: "/images/awards/album2021.jpg",
+    image: "/assets/images/yomaps-03.jpg",
     description: "Celebrated for delivering the most impactful album of the year.",
   },
 ];
@@ -77,38 +78,63 @@ export default function AwardsPage() {
         </div>
 
         {/* Awards Grid */}
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {filteredAwards.map((award, idx) => (
-            <motion.div
-              key={award.id}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.2 }}
-            >
-              <Card className="overflow-hidden rounded-2xl shadow-xl bg-gray-900/60 border border-gray-700 hover:scale-105 transition">
-                <img
-                  src={award.image}
-                  alt={award.title}
-                  className="w-full h-52 object-cover"
-                />
-                <CardContent className="p-6 space-y-4">
-                  <h3 className="text-xl font-bold text-blue-400 flex items-center gap-2">
-                    <Trophy className="w-5 h-5 text-white" />
-                    {award.title}
-                  </h3>
-                  <p className="text-gray-300 text-sm">{award.description}</p>
-                  <div className="flex items-center justify-between text-sm text-gray-400">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4 text-blue-400" />
-                      {award.year}
-                    </span>
-                    <Badge className="bg-white text-black">
-                      {award.category}
-                    </Badge>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+<motion.div
+  key={award.id}
+  initial={{ opacity: 0, y: 40 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: idx * 0.2 }}
+>
+  <Card
+    className="relative overflow-hidden rounded-2xl shadow-lg 
+               bg-gradient-to-b from-gray-900/80 via-gray-900/70 to-gray-900/60
+               border border-gray-800 hover:border-indigo-500/50
+               backdrop-blur-sm hover:shadow-2xl hover:scale-[1.03] 
+               transition-transform duration-300 ease-out"
+  >
+    {/* Image with overlay */}
+    <div className="relative w-full h-56">
+      <Image
+        src={award.image}
+        alt={award.title}
+        fill
+        className="w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+    </div>
+
+    {/* Card Content */}
+    <CardContent className="p-6 space-y-4">
+      {/* Title with icon */}
+      <h3 className="text-xl font-semibold text-indigo-400 flex items-center gap-2">
+        <Trophy className="w-5 h-5 text-indigo-300 drop-shadow-md" />
+        {award.title}
+      </h3>
+
+      {/* Description */}
+      <p className="text-gray-300/90 text-sm leading-relaxed">
+        {award.description}
+      </p>
+
+      {/* Footer info */}
+      <div className="flex items-center justify-between text-sm text-gray-400">
+        <span className="flex items-center gap-1">
+          <Calendar className="w-4 h-4 text-indigo-400" />
+          {award.year}
+        </span>
+        <Badge
+          className="bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 
+                     px-3 py-1 rounded-full text-xs font-medium"
+        >
+          {award.category}
+        </Badge>
+      </div>
+    </CardContent>
+  </Card>
+</motion.div>
+
+
           ))}
         </div>
       </div>

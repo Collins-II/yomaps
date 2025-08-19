@@ -19,16 +19,6 @@ import ContactBookings from "@/components/contact-bookings";
 import HeroSection from "@/components/hero";
 
 export default function Home() {
-  const featuredTrack: Track = useMemo(
-    () => ({
-      id: "olios-demo-001",
-      title: "Midnight Skyline (Demo)",
-      artist: "Olios Records",
-      src: "https://cdn.pixabay.com/download/audio/2021/10/26/audio_7c54a05c34.mp3?filename=midnight-113508.mp3",
-      cover: "https://images.unsplash.com/photo-1554941426-e9604e34bc94?q=80&w=1200&auto=format&fit=crop",
-    }),
-    []
-  );
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_10%_0%,#0b0f1a_0%,#05070d_60%,#05060a_100%)] text-white">
@@ -37,8 +27,8 @@ export default function Home() {
       <AwardsSection />
       <UpcomingEvents />
       <PopularAlbums/>
-      <BlogSection/>
-      {/* CONTENT TABS 
+      {/*<BlogSection/>
+       CONTENT TABS 
       <section className="mx-auto max-w-7xl px-4 pb-20">
         <Tabs defaultValue="releases" className="mt-4">
           <TabsList className="grid w-full grid-cols-3 bg-white/10">
@@ -79,17 +69,6 @@ export default function Home() {
         </Tabs>
       </section>*/}
       <ContactBookings />
-      {/* FOOTER */}
-      <footer className="border-t border-white/10 bg-black/40 py-10 text-white/70">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 md:flex-row">
-          <p className="text-sm">© {new Date().getFullYear()} Olios Records. All rights reserved.</p>
-          <div className="flex items-center gap-4 text-sm">
-            <a className="hover:text-white" href="#">Privacy</a>
-            <a className="hover:text-white" href="#">Terms</a>
-            <a className="hover:text-white" href="#">Contact</a>
-          </div>
-        </div>
-      </footer>
 
       {/* -------- OPTIONAL API ROUTES (paste into files) --------
 

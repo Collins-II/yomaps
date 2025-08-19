@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -78,13 +79,20 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        <div className="md:hidden">
+        <div className="md:hidden ">
+              
           <Sheet>
             <SheetTrigger aria-label="Open Menu">
               <Menu className="h-6 w-6 text-white" />
             </SheetTrigger>
-            <SheetContent side="right" className="bg-black text-white p-6">
+            <SheetContent side="right" className=" bg-black text-white p-6">
+              {/* Background with spotlight gradient */}
+              
               <nav className="flex flex-col gap-6 mt-12">
+                 {/* Logo */}
+                <Link href="/" className="text-2xl md:text-3xl font-extrabold tracking-wide text-white ">
+                  Yo Maps Yo
+                </Link>
                 {navItems.map((item) => {
                   const isActive = pathname === item.href;
                   return (
@@ -109,6 +117,8 @@ export default function Navbar() {
                 <Button asChild className="mt-4 w-full rounded-full bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 text-lg font-semibold">
                   <Link href="#contact">Book Now</Link>
                 </Button>
+
+                
               </nav>
             </SheetContent>
           </Sheet>

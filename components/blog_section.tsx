@@ -55,7 +55,7 @@ export default function BlogSection() {
       className="py-20 bg-gradient-to-b from-black via-neutral-950 to-black text-white"
       id="blog"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -80,7 +80,7 @@ export default function BlogSection() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <Card className="overflow-hidden rounded-2xl bg-neutral-900 border border-indigo-600/40 shadow-lg hover:shadow-indigo-500/20 transition">
+          <Card className="overflow-hidden rounded-2xl bg-neutral-900 border border-indigo-900/40 shadow-lg hover:shadow-indigo-500/20 transition">
             <div className="md:flex">
               <div className="relative md:w-1/2 h-64 md:h-auto">
                 <Image
@@ -113,7 +113,7 @@ export default function BlogSection() {
         </motion.div>
 
         {/* Recent Posts Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {posts.slice(1).map((post, index) => (
             <motion.div
               key={post.id}
@@ -122,8 +122,8 @@ export default function BlogSection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="overflow-hidden rounded-xl bg-neutral-900 border border-neutral-800 hover:border-indigo-500/50 hover:shadow-lg hover:shadow-indigo-500/10 transition group">
-                <div className="relative h-48">
+              <Card className="max-h-100 overflow-hidden rounded-xl bg-neutral-900 border border-neutral-800 hover:border-indigo-500/50 hover:shadow-lg hover:shadow-indigo-500/10 transition group">
+                <div className="relative h-58 max-h-58">
                   <Image
                     src={post.image}
                     alt={post.title}
@@ -131,8 +131,8 @@ export default function BlogSection() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <CardContent className="p-5">
-                  <h4 className="text-lg font-semibold mb-2 text-white">
+                <CardContent className="px-5 py-2">
+                  <h4 className="text-lg font-semibold mb-2 text-white truncate">
                     {post.title}
                   </h4>
                   <p className="text-sm text-neutral-400 mb-3">{post.excerpt}</p>

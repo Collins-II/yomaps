@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import AudioPlayer from "./audio_player";
 
 interface Track {
   id: number;
@@ -21,7 +22,7 @@ interface Album {
   tracks: Track[];
 }
 
-const albums: Album[] = [
+export const albums: Album[] = [
   {
     id: 1,
     title: "My Hero",
@@ -60,10 +61,6 @@ export default function PopularAlbums() {
   const [currentTrackId, setCurrentTrackId] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-
-  const currentAlbumIndex = currentAlbum.tracks.findIndex(
-    (t) => t.id === currentTrackId
-  );
 
   // Play/pause track
   const togglePlay = (trackId: number, src: string) => {
@@ -177,21 +174,20 @@ export default function PopularAlbums() {
            {/* Tracks */}
       <div className="space-y-2">
         {currentAlbum.tracks.map((track) => (
-          <div
-            key={track.id}
-            className="flex justify-between items-center bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl hover:bg-white/20 transition cursor-pointer"
-            onClick={() => playTrack(track.id, track.audioSrc)}
-          >
-            <div className="flex items-center gap-2">
-              {currentTrackId === track.id && isPlaying ? (
-                <Pause className="w-5 h-5 text-indigo-400" />
-              ) : (
-                <Play className="w-5 h-5 text-indigo-400" />
-              )}
-              <span className="text-white/80">{track.title}</span>
-            </div>
-            <span className="text-white/60">{track.duration}</span>
-          </div>
+          <AudioPlayer
+              key={track.id}
+              ref={audioRef as RefObject<HTMLAudioElement>}
+              playTrack={playTrack}
+              currentTrackId={currentTrackId as number}
+              isPlaying={isPlaying}
+              track={{
+                id: track.id,
+                title: track.title,
+                artist: "Yo Maps Yo",
+                src: track.audioSrc,
+                duration: Number(track.duration.split(":")[0]) * 60 + Number(track.duration.split(":")[1]), // convert mm:ss → seconds
+              }}
+            />
         ))}
       </div>
 
@@ -203,7 +199,7 @@ export default function PopularAlbums() {
         Play Album
       </Button>
 
-           {/* Hidden Audio Player */}
+           {/* Hidden Audio Player 
       <audio
         ref={audioRef}
         onEnded={() => {
@@ -219,7 +215,7 @@ export default function PopularAlbums() {
             setCurrentTrackId(null);
           }
         }}
-      />
+      />*/}
         </div>
       </div>
 

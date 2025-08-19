@@ -1,5 +1,5 @@
 export type Track = {
-  id: string;
+  id: number;
   title: string;
   artist: string;
   src: string; // public MP3/stream URL

@@ -43,7 +43,7 @@ export default function ContactBookings() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <Mail className="text-indigo-400 w-6 h-6" />
-              <span>bookings@oliosrecords.com</span>
+              <span>oliosrecords24@gmail.com</span>
             </div>
             <div className="flex items-center gap-3">
               <Phone className="text-indigo-400 w-6 h-6" />
@@ -73,6 +73,12 @@ export default function ContactBookings() {
                 <Input 
                   type="email" 
                   placeholder="Your Email Address" 
+                  className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
+                  required 
+                />
+                <Input 
+                  type="number" 
+                  placeholder="Your Phone Number" 
                   className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
                   required 
                 />

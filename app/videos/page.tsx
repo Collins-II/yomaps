@@ -4,8 +4,9 @@ import { useState, useMemo, useRef } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import SectionHero from "@/components/section_hero";
+import VideoCard from "@/components/videocard";
 
-interface Video {
+export interface Video {
   id: string;
   title: string;
   category: string;
@@ -153,32 +154,7 @@ export default function VideosPage() {
       {/* Videos Grid */}
       <div className="mx-auto max-w-7xl grid md:grid-cols-2 lg:grid-cols-3 gap-10 px-4">
         {filteredVideos.map((video) => (
-          <motion.div
-            key={video.id}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.4 }}
-            className="bg-zinc-900 rounded-2xl overflow-hidden shadow-xl"
-          >
-            <div className="relative w-full h-56">
-              <iframe
-                src={`https://www.youtube.com/embed/${video.id}`}
-                title={video.title}
-                className="w-full h-full"
-                allowFullScreen
-              />
-            </div>
-            <div className="p-4 flex flex-col gap-2">
-              <h3 className="text-white font-bold text-lg line-clamp-2">
-                {video.title}
-              </h3>
-              <p className="text-indigo-300 text-sm">{video.category}</p>
-              <span className="text-white/60 text-xs">
-                {new Date(video.date).toLocaleDateString()}
-              </span>
-            </div>
-          </motion.div>
+          <VideoCard video={video} key={video.id}/>
         ))}
 
         {filteredVideos.length === 0 && (
