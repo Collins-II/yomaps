@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Play, Calendar, Youtube } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { FaYoutube } from "react-icons/fa";
 
 export default function HeroSection() {
   const router = useRouter();
@@ -59,15 +60,15 @@ export default function HeroSection() {
             </Button>
             <Button
               onClick={() => handleRoute("videos")}
-              variant="outline"
-              className="rounded-xl border-white/20 text-red-700 hover:bg-white hover:text-black px-6 py-3 text-lg flex items-center gap-2"
+              variant="destructive"
+              className="rounded-xl border-white/20 text-white hover:bg-white hover:text-red-700 px-6 py-3 text-lg flex items-center gap-2"
             >
-              <Youtube className="w-5 h-5 text-red-500" /> Watch Videos
+              <FaYoutube size={28} /> Watch Videos
             </Button>
             <Button
               onClick={() => handleRoute("events")}
-              variant="ghost"
-              className="rounded-xl text-white/70 hover:text-white hover:bg-slate-900 px-6 py-3 text-lg flex items-center gap-2"
+              variant="outline"
+              className="rounded-xl text-white hover:text-black bg-transparent px-6 py-3 text-lg flex items-center gap-2"
             >
               <Calendar className="w-5 h-5" /> Upcoming Shows
             </Button>

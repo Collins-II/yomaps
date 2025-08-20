@@ -105,8 +105,10 @@ export default function Navbar() {
                       <Link
                         href={item.href}
                         onClick={(e) => handleScrollLink(e, item.href)}
-                        className={`text-lg font-semibold ${
-                          isActive ? "text-white" : "text-white/70 hover:text-white"
+                        className={`relative px-2 py-1 text-1xl font-semibold transition-all ${
+                          isActive
+                            ? "text-white after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-1 after:bg-indigo-500 after:rounded-full after:scale-x-100 after:origin-center"
+                            : "text-white/70 hover:text-white hover:after:absolute hover:after:-bottom-1 hover:after:left-0 hover:after:right-0 hover:after:h-1 hover:after:bg-indigo-500 hover:after:rounded-full hover:after:scale-x-100 hover:after:origin-center"
                         }`}
                       >
                         {item.label}

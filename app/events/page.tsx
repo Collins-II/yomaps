@@ -23,7 +23,7 @@ export interface Event {
   bannerImage: string;
 }
 
-const eventsData: Event[] = [
+export const eventsData: Event[] = [
   {
     id: 1,
     title: "Olios Summer Festival",

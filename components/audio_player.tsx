@@ -51,9 +51,23 @@ const AudioPlayer = ({ ref, track , currentTrackId, playTrack, isPlaying}: Playe
   const [duration, setDuration] = useState<number | undefined>(track.duration);
   const { count, increment } = usePlayCount(track.id);
 
+  const [playCount, setPlayCount] = useState<number>(0)
+  const key = `olios:plays:${track.id}`;
+
+    useEffect(() => {
+    const existing = Number(localStorage.getItem(key) || 0);
+    if (!Number.isNaN(existing)) setPlayCount(existing);
+  }, [key]);
+
+ const newCount = () => {
+  const next = playCount + 1;
+    setPlayCount(next);
+    localStorage.setItem(key, String(next));
+ }
 
   useEffect(() => {
     const a = ref.current;
+    
     if (!a) return;
     const onPlay = () => setPlaying(true);
     const onPause = () => setPlaying(false);
@@ -75,6 +89,7 @@ const AudioPlayer = ({ ref, track , currentTrackId, playTrack, isPlaying}: Playe
     a.addEventListener("timeupdate", onTime);
     a.addEventListener("loadedmetadata", onLoaded);
     a.addEventListener("ended", onEnded);
+    localStorage.getItem(key);
     return () => {
       a.removeEventListener("play", onPlay);
       a.removeEventListener("pause", onPause);
@@ -110,12 +125,12 @@ const AudioPlayer = ({ ref, track , currentTrackId, playTrack, isPlaying}: Playe
           </div>
         </div>
         <Badge variant="secondary" className="bg-white/10 text-white/90 backdrop-blur">
-          <Headphones className="mr-1 h-3.5 w-3.5" /> {count} plays
+          <Headphones className="mr-1 h-3.5 w-3.5" /> {playCount} plays
         </Badge>
       </CardHeader>
       <CardContent>
         <div className="flex items-center gap-4">
-          <Button onClick={() => playTrack(track.id, track.src)} className="h-12 w-12 rounded-2xl shadow-lg">
+          <Button onClick={() => {playTrack(track.id, track.src); newCount();}} className="h-12 w-12 rounded-2xl shadow-lg">
             {currentTrackId === track.id && isPlaying ? (
               <Pause className="h-5 w-5" />
             ) : (

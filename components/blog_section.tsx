@@ -52,10 +52,10 @@ const posts: BlogPost[] = [
 export default function BlogSection() {
   return (
     <section
-      className="py-20 bg-gradient-to-b from-black via-neutral-950 to-black text-white"
+      className="w-full py-20 px-6 md:px-12 bg-gradient-to-b from-black via-neutral-950 to-black text-white"
       id="blog"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

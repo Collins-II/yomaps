@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
+import MobileNumberInput from "./ui/mobile_input";
 
 export default function ContactBookings() {
   const [loading, setLoading] = useState(false);
@@ -47,7 +48,7 @@ export default function ContactBookings() {
             </div>
             <div className="flex items-center gap-3">
               <Phone className="text-indigo-400 w-6 h-6" />
-              <span>+260 970 000 000</span>
+              <span>+260 972 722878</span>
             </div>
             <div className="flex items-center gap-3">
               <MapPin className="text-indigo-400 w-6 h-6" />
@@ -76,11 +77,8 @@ export default function ContactBookings() {
                   className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
                   required 
                 />
-                <Input 
-                  type="number" 
-                  placeholder="Your Phone Number" 
-                  className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
-                  required 
+                <MobileNumberInput 
+                  
                 />
                 <Input 
                   placeholder="Subject (e.g., Artist Booking)" 

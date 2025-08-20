@@ -115,7 +115,7 @@ export default function PopularAlbums() {
   };
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-20">
+    <section className="mx-auto max-w-6xl px-2 py-20">
       <div className="mb-12 text-center">
         <h2 className="text-3xl sm:text-5xl font-extrabold">
           Popular <span className="text-indigo-400">Albums</span>
@@ -220,7 +220,7 @@ export default function PopularAlbums() {
       </div>
 
      {/* Thumbnail Album Slider */}
-<div className="mt-12 flex gap-4 overflow-x-auto scrollbar-hide py-2 md:px-3">
+<div className="mt-12 flex gap-4 overflow-x-auto scrollbar-hide py-4 px-3">
   {albums.map((album, idx) => (
     <motion.div
       key={album.id}

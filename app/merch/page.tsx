@@ -5,52 +5,10 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import SectionHero from "@/components/section_hero";
+import merchItems from "@/data/demo_artists";
+import { ShoppingCart } from "lucide-react";
+import Image from "next/image";
 
-interface MerchItem {
-  id: number;
-  name: string;
-  price: string;
-  image: string;
-  category: string;
-}
-
-const merchItems: MerchItem[] = [
-  {
-    id: 1,
-    name: "Signature Sneakers",
-    price: "$120",
-    image: "/assets/merch/sneakers.jpg",
-    category: "Sneakers",
-  },
-  {
-    id: 2,
-    name: "Classic T-Shirt",
-    price: "$40",
-    image: "/assets/merch/tshirt.jpg",
-    category: "T-Shirts",
-  },
-  {
-    id: 3,
-    name: "Logo Cap",
-    price: "$25",
-    image: "/assets/merch/cap-01.jpg",
-    category: "Caps",
-  },
-  {
-    id: 4,
-    name: "Limited Edition Hoodie",
-    price: "$75",
-    image: "/assets/merch/hoodie.jpg",
-    category: "Hoodies",
-  },
-  {
-    id: 5,
-    name: "Wristband",
-    price: "$10",
-    image: "/assets/merch/wristband.jpg",
-    category: "Accessories",
-  },
-];
 
 const categories = ["All", "Sneakers", "T-Shirts", "Caps", "Hoodies", "Accessories"];
 
@@ -91,31 +49,49 @@ export default function MerchPage() {
       >
         {filteredItems.map((item) => (
           <motion.div
-            key={item.id}
-            layout
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4 }}
-          >
-            <Card className="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:shadow-2xl transition-all">
-              <CardContent className="p-0">
-                <div className="relative w-full h-56 overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="object-cover w-full h-full transform hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-white text-xl font-semibold">{item.name}</h3>
-                  <p className="text-blue-400 font-bold mt-1">{item.price}</p>
-                  <Button className="w-full mt-4 bg-blue-500 text-white hover:bg-blue-600">
-                    Buy Now
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
+      key={item.id}
+      layout
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+    >
+      <Card className="group relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-blue-500/60 hover:shadow-blue-500/30 hover:shadow-lg transition-all duration-500">
+        <CardContent className="p-0">
+          {/* Image Section */}
+          <div className="relative w-full h-56 overflow-hidden">
+            <Image
+              src={item.image}
+              alt={item.name}
+              fill
+              className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700"
+            />
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+            {/* Badge 
+            {item.isNew && (
+              <span className="absolute top-3 left-3 px-3 py-1 text-xs font-semibold bg-blue-500 text-white rounded-full shadow-md">
+                New
+              </span>
+            )}*/}
+          </div>
+
+          {/* Content */}
+          <div className="p-5">
+            <h3 className="text-white text-lg font-semibold truncate">
+              {item.name}
+            </h3>
+            <p className="text-blue-400 font-bold mt-1">{item.price}</p>
+
+            <Button
+              className="w-full mt-5 bg-blue-500 text-white hover:bg-blue-600 transition-all rounded-xl flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+            >
+              <ShoppingCart className="w-5 h-5" />
+              Buy Now
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
         ))}
       </motion.div>
 

@@ -66,7 +66,7 @@ export default function AwardsSection() {
               <div className="flex items-center justify-center mb-4">
                 <Trophy className="w-10 h-10 text-indigo-400" />
               </div>
-              <h3 className="text-xl font-semibold text-indigo-300">{award.title}</h3>
+              <h3 className="text-xl font-semibold text-white">{award.title}</h3>
               <p className="text-sm text-gray-400">{award.organization}</p>
               <p className="mt-2 text-sm text-gray-300">{award.description}</p>
               <span className="mt-4 inline-block text-xs font-bold text-indigo-500 bg-indigo-500/20 rounded-full px-3 py-1">
