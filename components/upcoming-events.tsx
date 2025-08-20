@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import EventCard from "./event_card";
-import { eventsData } from "@/app/events/page";
+import { eventsData } from "@/data/demo_artists";
 
 interface Event {
   id: number;

@@ -11,6 +11,7 @@ import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from "lucide-reac
 import dayjs from "dayjs";
 import CalendarView from "@/components/calendar_view";
 import EventCard from "@/components/event_card";
+import { eventsData } from "@/data/demo_artists";
 
 export interface Event {
   id: number;
@@ -22,39 +23,6 @@ export interface Event {
   description: string;
   bannerImage: string;
 }
-
-export const eventsData: Event[] = [
-  {
-    id: 1,
-    title: "Olios Summer Festival",
-    date: "2025-08-25",
-    location: "Lusaka, Zambia",
-    category: "Festival",
-    priceRange: "100-200 ZMW",
-    description: "A night of unforgettable performances featuring Olios Records’ top artists.",
-    bannerImage: "/assets/images/event-01.jpg",
-  },
-  {
-    id: 2,
-    title: "Album Release Party",
-    date: "2025-09-10",
-    location: "Johannesburg, South Africa",
-    category: "Launch",
-    priceRange: "150-300 ZMW",
-    description: "Celebrate the launch of our highly anticipated new release.",
-    bannerImage: "/assets/images/stage-01.jpg",
-  },
-  {
-    id: 3,
-    title: "Live Studio Session",
-    date: "2025-10-03",
-    location: "Cape Town, South Africa",
-    category: "Exclusive",
-    priceRange: "50-100 ZMW",
-    description: "Exclusive behind-the-scenes live recording experience.",
-    bannerImage: "/assets/images/yomaps-02.jpg",
-  },
-];
 
 export default function EventsPage() {
   const [viewMode, setViewMode] = useState<"list" | "calendar">("list");

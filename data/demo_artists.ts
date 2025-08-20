@@ -1,3 +1,5 @@
+import { Event } from "@/app/events/page";
+
 export const demoArtists = [
   { id: "a1", name: "OLIØ", role: "Producer", img: "https://images.unsplash.com/photo-1513829596324-4bb2800c5efb?q=80&w=800&auto=format&fit=crop" },
   { id: "a2", name: "Nyx", role: "Singer", img: "https://images.unsplash.com/photo-1536082550872-7b66c2f16adf?q=80&w=800&auto=format&fit=crop" },
@@ -13,7 +15,7 @@ interface MerchItem {
   category: string;
 }
 
-const merchItems: MerchItem[] =[
+export const merchItems: MerchItem[] =[
   {
     id: 1,
     name: "Signature Sneakers",
@@ -58,4 +60,35 @@ const merchItems: MerchItem[] =[
   },
 ];
 
-export default merchItems;
+export const eventsData: Event[] = [
+  {
+    id: 1,
+    title: "Olios Summer Festival",
+    date: "2025-08-25",
+    location: "Lusaka, Zambia",
+    category: "Festival",
+    priceRange: "100-200 ZMW",
+    description: "A night of unforgettable performances featuring Olios Records’ top artists.",
+    bannerImage: "/assets/images/event-01.jpg",
+  },
+  {
+    id: 2,
+    title: "Album Release Party",
+    date: "2025-09-10",
+    location: "Johannesburg, South Africa",
+    category: "Launch",
+    priceRange: "150-300 ZMW",
+    description: "Celebrate the launch of our highly anticipated new release.",
+    bannerImage: "/assets/images/stage-01.jpg",
+  },
+  {
+    id: 3,
+    title: "Live Studio Session",
+    date: "2025-10-03",
+    location: "Cape Town, South Africa",
+    category: "Exclusive",
+    priceRange: "50-100 ZMW",
+    description: "Exclusive behind-the-scenes live recording experience.",
+    bannerImage: "/assets/images/yomaps-02.jpg",
+  },
+];
