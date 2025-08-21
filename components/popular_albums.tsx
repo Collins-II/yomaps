@@ -3,7 +3,7 @@
 import { RefObject, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AudioPlayer from "./audio_player";
 
@@ -62,22 +62,6 @@ export default function PopularAlbums() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Play/pause track
-  const togglePlay = (trackId: number, src: string) => {
-    if (currentTrackId === trackId) {
-      if (isPlaying) audioRef.current?.pause();
-      else audioRef.current?.play();
-      setIsPlaying(!isPlaying);
-    } else {
-      setCurrentTrackId(trackId);
-      if (audioRef.current) {
-        audioRef.current.src = src;
-        audioRef.current.play();
-        setIsPlaying(true);
-      }
-    }
-  };
-
     const playTrack = (trackId: number, src: string) => {
     if (audioRef.current) {
       if (currentTrackId === trackId && isPlaying) {
@@ -115,7 +99,7 @@ export default function PopularAlbums() {
   };
 
   return (
-    <section className="mx-auto max-w-6xl px-2 py-20">
+    <section className="mx-auto max-w-6xl  py-20 overflow-x-hidden">
       <div className="mb-12 text-center">
         <h2 className="text-3xl sm:text-5xl font-extrabold">
           Popular <span className="text-indigo-400">Albums</span>
@@ -126,7 +110,7 @@ export default function PopularAlbums() {
       </div>
 
       {/* Main Album Player */}
-      <div className="relative flex flex-col lg:flex-row items-center gap-8">
+      <div className="relative flex flex-col lg:flex-row items-center gap-8 px-4 sm:px-6">
         <div className="relative w-full lg:w-1/3 h-[300px] sm:h-[400px] lg:h-[450px] rounded-3xl overflow-hidden shadow-xl">
           <AnimatePresence mode="wait">
             <motion.div
@@ -220,7 +204,7 @@ export default function PopularAlbums() {
       </div>
 
      {/* Thumbnail Album Slider */}
-<div className="mt-12 flex gap-4 overflow-x-auto scrollbar-hide py-4 px-3">
+<div className="mt-12 flex gap-4 overflow-x-auto scrollbar-hide py-4 px-6">
   {albums.map((album, idx) => (
     <motion.div
       key={album.id}

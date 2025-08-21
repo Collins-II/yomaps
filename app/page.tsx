@@ -2,7 +2,7 @@
 import React from "react";
 import UpcomingEvents from "@/components/upcoming-events";
 import PopularAlbums from "@/components/popular_albums";
-import BlogSection from "@/components/blog_section";
+//import BlogSection from "@/components/blog_section";
 import AwardsSection from "@/components/awards-section";
 import ContactBookings from "@/components/contact-bookings";
 import HeroSection from "@/components/hero";
@@ -10,13 +10,12 @@ import HeroSection from "@/components/hero";
 export default function Home() {
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_10%_0%,#0b0f1a_0%,#05070d_60%,#05060a_100%)] text-white">
-     <HeroSection />
-      
+    <div className="min-h-screen w-full overflow-x-hidden bg-[radial-gradient(circle_at_10%_0%,#0b0f1a_0%,#05070d_60%,#05060a_100%)] text-white">
+      <HeroSection />
       <AwardsSection />
       <UpcomingEvents />
       <PopularAlbums/>
-      <BlogSection/>
+      {/*<BlogSection/>*/}
       <ContactBookings />
 
       {/* -------- OPTIONAL API ROUTES (paste into files) --------

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Play, Calendar, Youtube } from "lucide-react";
+import { Play, Calendar } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaYoutube } from "react-icons/fa";

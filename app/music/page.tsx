@@ -144,7 +144,7 @@ export default function MusicPage() {
       </div>
 
       {/* Songs Grid */}
-      <div className="mx-auto max-w-7xl grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredTracks.map(track => (
           <motion.div
             key={track.id}
