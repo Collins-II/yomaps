@@ -1,16 +1,5 @@
 "use client";
-import React, { useMemo } from "react";
-import { motion } from "framer-motion";
-import {  Youtube, ChevronRight, Sparkles} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Track } from "@/data/types";
-import AudioPlayer from "@/components/audio_player";
-import ArtistsGrid from "@/components/ui/artist_grid";
-import VideoGallery from "@/components/ui/video_gallery";
-import Image from "next/image";
-import Navbar from "@/components/navbar";
+import React from "react";
 import UpcomingEvents from "@/components/upcoming-events";
 import PopularAlbums from "@/components/popular_albums";
 import BlogSection from "@/components/blog_section";
@@ -27,47 +16,7 @@ export default function Home() {
       <AwardsSection />
       <UpcomingEvents />
       <PopularAlbums/>
-      {/*<BlogSection/>
-       CONTENT TABS 
-      <section className="mx-auto max-w-7xl px-4 pb-20">
-        <Tabs defaultValue="releases" className="mt-4">
-          <TabsList className="grid w-full grid-cols-3 bg-white/10">
-            <TabsTrigger value="releases">Releases</TabsTrigger>
-            <TabsTrigger value="videos">Videos</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="releases" className="mt-6">
-            <div className="grid gap-6 md:grid-cols-2">
-              <AudioPlayer
-                track={{
-                  id: "olios-demo-002",
-                  title: "Neon Drift (Demo)",
-                  artist: "Nyx",
-                  src: "https://cdn.pixabay.com/download/audio/2021/10/26/audio_1945d6fbfe.mp3?filename=drift-113507.mp3",
-                  cover: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200&auto=format&fit=crop",
-                }}
-              />
-              <AudioPlayer
-                track={{
-                  id: "olios-demo-003",
-                  title: "Dust & Gold (Demo)",
-                  artist: "Zito",
-                  src: "https://cdn.pixabay.com/download/audio/2021/11/09/audio_fa1a8aeaa7.mp3?filename=goldn-113901.mp3",
-                  cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1200&auto=format&fit=crop",
-                }}
-              />
-            </div>
-          </TabsContent>
-
-          <TabsContent value="videos" className="mt-6">
-            <div className="mb-4 flex items-center gap-2 text-white/70">
-              <Youtube className="h-4 w-4" />
-              <span className="text-sm">Streaming via YouTube embeds. Stats shown when API proxy is configured.</span>
-            </div>
-            <VideoGallery videoIds={videoIds} />
-          </TabsContent>
-        </Tabs>
-      </section>*/}
+      <BlogSection/>
       <ContactBookings />
 
       {/* -------- OPTIONAL API ROUTES (paste into files) --------

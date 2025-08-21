@@ -4,23 +4,10 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import EventCard from "./event_card";
 import { eventsData } from "@/data/demo_artists";
-
-interface Event {
-  id: number;
-  title: string;
-  date: string;
-  price: number;
-  location: string;
-  bannerImage: string;
-  description?: string;
-}
 
 
 export default function UpcomingEvents() {
-  const minPrice=20;
-  const maxPrice=80;
 
   return (
     <section className="mx-auto max-w-6xl px-2 py-20">

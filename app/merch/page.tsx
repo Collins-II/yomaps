@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import SectionHero from "@/components/section_hero";
-import merchItems from "@/data/demo_artists";
+import { merchItems } from "@/data/demo_artists";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 
