@@ -22,15 +22,15 @@ export default function Footer() {
         <div className="flex flex-col items-center md:items-end gap-4">
           <p className="text-sm font-medium text-white/70">Listen on:</p>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-indigo-400 transition">
+            <Link href="#" className="hover:text-indigo-400 transition">
               <FaSpotify size={22} />
-            </a>
-            <a href="#" className="hover:text-indigo-400 transition">
+            </Link>
+            <Link href="#" className="hover:text-indigo-400 transition">
               <FaApple size={22} />
-            </a>
-            <a href="#" className="hover:text-indigo-400 transition">
+            </Link>
+            <Link href="#" className="hover:text-indigo-400 transition">
               <FaYoutube size={22} />
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -38,14 +38,14 @@ export default function Footer() {
         <div className="flex flex-col items-center md:items-end gap-2">
           <p className="text-sm font-medium text-white/70">Quick Links:</p>
           <div className="flex gap-4">
-            <a className="hover:text-indigo-400 transition" href="#">Privacy</a>
-            <a className="hover:text-indigo-400 transition" href="#">Terms</a>
-            <a className="hover:text-indigo-400 transition" href="#">Contact</a>
+            <Link className="hover:text-indigo-400 transition" href="#">Privacy</Link>
+            <Link className="hover:text-indigo-400 transition" href="#">Terms</Link>
+            <Link className="hover:text-indigo-400 transition" href="#">Contact</Link>
           </div>
           <div className="flex gap-3 mt-2">
-            <a href="#" className="hover:text-indigo-400 transition"><FaInstagram size={18} /></a>
-            <a href="#" className="hover:text-indigo-400 transition"><FaTwitter size={18} /></a>
-            <a href="#" className="hover:text-indigo-400 transition"><FaFacebook size={18} /></a>
+            <Link href="#" className="hover:text-indigo-400 transition"><FaInstagram size={18} /></Link>
+            <Link href="#" className="hover:text-indigo-400 transition"><FaTwitter size={18} /></Link>
+            <Link href="#" className="hover:text-indigo-400 transition"><FaFacebook size={18} /></Link>
           </div>
         </div>
 

@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { formatTime } from "@/lib/utils";
 import { Track } from "@/data/types";
 import { useDispatch, useSelector } from "react-redux";
+import Image from "next/image";
 
 const usePlayCount = (trackId: number) => {
   const key = `olios:plays:${trackId}`;
@@ -97,7 +98,7 @@ const AudioPlayer = ({ ref, track , currentTrackId, playTrack, isPlaying}: Playe
       a.removeEventListener("loadedmetadata", onLoaded);
       a.removeEventListener("ended", onEnded);
     };
-  }, [increment, track.id, dispatch]);
+  }, [increment, track.id, dispatch, currentTrackId, ref, key]);
 
   const onSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     const a = ref.current;
@@ -120,7 +121,7 @@ const AudioPlayer = ({ ref, track , currentTrackId, playTrack, isPlaying}: Playe
             )}
           </div>
           <div>
-            <CardTitle className="text-lg font-semibold tracking-tight">{track.title}</CardTitle>
+            <CardTitle className="text-lg font-semibold tracking-tight truncate">{track.title}</CardTitle>
             <p className="text-sm text-white/70">{track.artist}</p>
           </div>
         </div>

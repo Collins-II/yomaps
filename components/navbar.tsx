@@ -11,11 +11,11 @@ import {
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const homePath = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -73,9 +73,10 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <Button asChild className="rounded-full bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 text-sm md:text-base font-semibold">
+          {homePath && (<Button asChild className="rounded-full bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 text-sm md:text-base font-semibold">
             <Link href="#contact">Book Now</Link>
-          </Button>
+          </Button>)
+          }
         </div>
 
         {/* Mobile Menu */}

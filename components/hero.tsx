@@ -4,13 +4,10 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Play, Calendar } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { FaYoutube } from "react-icons/fa";
+import Link from "next/link";
 
 export default function HeroSection() {
-  const router = useRouter();
-
-  const handleRoute = (path: string) => router.push(`/${path}`);
 
   return (
     <section className="relative w-full overflow-hidden bg-black text-white">
@@ -55,23 +52,27 @@ export default function HeroSection() {
           
           {/* CTA Buttons */}
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <Button onClick={() => handleRoute("music")} className="rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 text-lg font-semibold flex items-center gap-2">
-              <Play className="w-5 h-5" /> Listen Now
+            <Link href={`/events`}>
+            <Button className="rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 text-lg font-semibold flex items-center gap-2">
+               <Play className="w-5 h-5" /> Listen Now
             </Button>
+             </Link>
+            <Link href={'/videos'}> 
             <Button
-              onClick={() => handleRoute("videos")}
               variant="destructive"
               className="rounded-xl border-white/20 text-white hover:bg-white hover:text-red-700 px-6 py-3 text-lg flex items-center gap-2"
             >
               <FaYoutube size={28} /> Watch Videos
             </Button>
+            </Link>
+            <Link href={'/events'}> 
             <Button
-              onClick={() => handleRoute("events")}
               variant="outline"
               className="rounded-xl text-white hover:text-black bg-transparent px-6 py-3 text-lg flex items-center gap-2"
-            >
+            >  
               <Calendar className="w-5 h-5" /> Upcoming Shows
             </Button>
+            </Link>
           </div>
         </motion.div>
 

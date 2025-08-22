@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { eventsData } from "@/data/demo_artists";
+import Link from "next/link";
 
 
 export default function UpcomingEvents() {
@@ -34,7 +35,7 @@ export default function UpcomingEvents() {
     </div>
 
     {/* Scrollable Events List */}
-    <div className="w-full lg:w-2/3 space-y-4 max-h-[600px] overflow-y-auto px-2 sm:px-4 pb-4 custom-scrollbar">
+    <div className="w-full lg:w-2/3 space-y-4 max-h-[800px] overflow-y-auto px-2 sm:px-4 pb-4 custom-scrollbar">
       <AnimatePresence initial={false}>
         {eventsData.map((event) => (
           <motion.div
@@ -73,6 +74,17 @@ export default function UpcomingEvents() {
           </motion.div>
         ))}
       </AnimatePresence>
+      <div className="flex items-center justify-end">
+          <Link href={`/events`}>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="bg-transparent text-indigo-400 hover:text-black my-2"
+             >
+              More →
+            </Button>
+          </Link>
+      </div>
     </div>
   </div>
 </section>
