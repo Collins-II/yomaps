@@ -99,7 +99,7 @@ export default function PopularAlbums() {
   };
 
   return (
-    <section className="mx-auto max-w-6xl  py-20 overflow-x-hidden">
+    <section className="mx-auto max-w-6xl py-20 overflow-x-hidden">
       <div className="mb-12 text-center">
         <h2 className="text-3xl sm:text-5xl font-extrabold">
           Popular <span className="text-indigo-400">Albums</span>
@@ -258,7 +258,6 @@ export default function PopularAlbums() {
     </motion.div>
   ))}
 </div>
-
-    </section>
+  </section>
   );
 }

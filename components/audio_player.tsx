@@ -109,59 +109,79 @@ const AudioPlayer = ({ ref, track , currentTrackId, playTrack, isPlaying}: Playe
 
   return (
     <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-slate-900/70 via-neutral-900/70 to-zinc-900/70 text-white backdrop-blur-xl shadow-xl">
-      <CardHeader className="flex flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="h-12 w-12 overflow-hidden rounded-xl border border-white/10 bg-white/5">
-            {track.cover ? (
-              <img src={track.cover} alt={track.title} className="h-full w-full object-cover" />
-            ) : (
-              <div className="flex h-full w-full items-center justify-center opacity-70">
-                <Music className="h-6 w-6" />
-              </div>
-            )}
+  <CardHeader className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
+    {/* LEFT: Cover + Title */}
+    <div className="flex items-center gap-2 sm:gap-3 w-full min-w-0">
+      <div className="h-10 w-10 sm:h-12 sm:w-12 overflow-hidden rounded-lg sm:rounded-xl border border-white/10 bg-white/5 shrink-0">
+        {track.cover ? (
+          <img src={track.cover} alt={track.title} className="h-full w-full object-cover" />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center opacity-70">
+            <Music className="h-5 w-5 sm:h-6 sm:w-6" />
           </div>
-          <div>
-            <CardTitle className="text-lg font-semibold tracking-tight truncate">{track.title}</CardTitle>
-            <p className="text-sm text-white/70">{track.artist}</p>
-          </div>
+        )}
+      </div>
+      <div className="min-w-0 flex-1">
+        <CardTitle className="text-sm sm:text-md md:text-lg font-semibold tracking-tight truncate">
+          {track.title}
+        </CardTitle>
+        <p className="text-xs sm:text-sm text-white/70 truncate">{track.artist}</p>
+      </div>
+    </div>
+
+    {/* RIGHT: Badge */}
+    <Badge
+      variant="secondary"
+      className="self-start sm:self-center bg-white/10 text-white/90 backdrop-blur text-xs sm:text-sm px-2 sm:px-3 py-0.5 sm:py-1"
+    >
+      <Headphones className="mr-1 h-3 w-3" /> {playCount}
+    </Badge>
+  </CardHeader>
+
+  <CardContent>
+    <div className="flex flex-row items-center gap-3 sm:gap-4">
+      {/* Play Button */}
+      <Button
+        onClick={() => {
+          playTrack(track.id, track.src);
+          newCount();
+        }}
+        className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl sm:rounded-2xl shadow-lg shrink-0"
+      >
+        {currentTrackId === track.id && isPlaying ? (
+          <Pause className="h-4 w-4 sm:h-5 sm:w-5" />
+        ) : (
+          <Play className="h-4 w-4 sm:h-5 sm:w-5" />
+        )}
+      </Button>
+
+      {/* Progress + Time */}
+      <div className="flex-1 w-full">
+        <input
+          aria-label="progress-range"
+          type="range"
+          min={0}
+          max={1}
+          step={0.001}
+          value={progress}
+          disabled={currentTrackId !== track.id}
+          onChange={onSeek}
+          className="w-full accent-white"
+        />
+        <div className="mt-1 flex justify-between text-[10px] sm:text-xs text-white/70">
+          <span>{currentTrackId === track.id && formatTime(current)}</span>
+          <span className="flex items-center gap-1">
+            <Clock className="h-3 w-3 inline" />
+            {formatTime(duration ?? 0)}
+          </span>
         </div>
-        <Badge variant="secondary" className="bg-white/10 text-white/90 backdrop-blur">
-          <Headphones className="mr-1 h-3.5 w-3.5" /> {playCount} plays
-        </Badge>
-      </CardHeader>
-      <CardContent>
-        <div className="flex items-center gap-4">
-          <Button onClick={() => {playTrack(track.id, track.src); newCount();}} className="h-12 w-12 rounded-2xl shadow-lg">
-            {currentTrackId === track.id && isPlaying ? (
-              <Pause className="h-5 w-5" />
-            ) : (
-              <Play className="h-5 w-5" />
-            )}
-          </Button>
-          <div className="flex-1">
-            <input
-              aria-label="progress-range"
-              type="range"
-              min={0}
-              max={1}
-              step={0.001}
-              value={progress}
-              disabled={currentTrackId !== track.id}
-              onChange={onSeek}
-              className="range accent-white w-full"
-            />
-            <div className="mt-1 flex justify-between text-xs text-white/70">
-              <span>{currentTrackId === track.id && formatTime(current)}</span>
-              <span>
-                <Clock className="mr-1 inline h-3 w-3" />
-                {formatTime(duration ?? 0)}
-              </span>
-            </div>
-          </div>
-        </div>
-        <audio ref={ref} src={track.src} preload="metadata" />
-      </CardContent>
-    </Card>
+      </div>
+    </div>
+
+    <audio ref={ref} src={track.src} preload="metadata" />
+  </CardContent>
+</Card>
+
   );
 }
 
