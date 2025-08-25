@@ -11,7 +11,7 @@ export default function MobileNumberInput() {
   const [value, setValue] = useState<E164Number | undefined>();
 
   return (
-    <div className="grid w-full gap-2">
+    <div className="grid w-full max-w-full text-xs sm:text-sm gap-2">
       <Label htmlFor="mobile" className="text-sm text-gray-400 pl-4 font-light">
         Phone Number
       </Label>

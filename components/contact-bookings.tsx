@@ -39,7 +39,7 @@ export default function ContactBookings() {
       <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight leading-snug">
         Contact & Bookings
       </h2>
-      <p className="text-gray-300 max-w-md text-sm sm:text-base">
+      <p className="flex-wrap text-gray-300 max-w-md text-sm sm:text-base">
         Get in touch with Olios Records for artist bookings, partnerships, and media inquiries.  
         We’ll respond within 24 hours.
       </p>
@@ -61,48 +61,61 @@ export default function ContactBookings() {
     </motion.div>
 
     {/* RIGHT SIDE - Booking Form */}
-    <motion.div
-      initial={{ x: 30, opacity: 0 }}
-      whileInView={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.6 }}
-    >
-      <Card className="bg-gray-900/80 border border-gray-700 rounded-2xl shadow-lg backdrop-blur-md">
-        <CardContent className="p-4 sm:p-6 md:p-8">
-          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
-            <Input 
-              placeholder="Your Full Name" 
-              className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 text-sm sm:text-base"
-              required 
-            />
-            <Input 
-              type="email" 
-              placeholder="Your Email Address" 
-              className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 text-sm sm:text-base"
-              required 
-            />
-            <MobileNumberInput />
-            <Input 
-              placeholder="Subject (e.g., Artist Booking)" 
-              className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 text-sm sm:text-base"
-              required 
-            />
-            <Textarea 
-              placeholder="Your Message / Booking Details..." 
-              className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 h-28 sm:h-32 text-sm sm:text-base"
-              required 
-            />
-            
-            <Button 
-              type="submit" 
-              className="w-full rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-2 text-sm sm:text-base"
-              disabled={loading}
-            >
-              {loading ? "Sending..." : "Send Booking Request"}
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
-    </motion.div>
+   {/* RIGHT SIDE - Booking Form */}
+<motion.div
+  initial={{ x: 30, opacity: 0 }}
+  whileInView={{ x: 0, opacity: 1 }}
+  transition={{ duration: 0.6 }}
+>
+  <Card className="bg-gray-900/80 border border-gray-700 rounded-xl shadow-lg backdrop-blur-md">
+    <CardContent className="p-3 sm:p-6 md:p-8">
+      <form onSubmit={handleSubmit} className="space-y-2.5 sm:space-y-4">
+        
+        <Input 
+          placeholder="Your Full Name" 
+          className="w-full min-w-0 bg-gray-800 border-gray-700 text-white 
+                     placeholder:text-gray-400 text-xs sm:text-sm"
+          required 
+        />
+
+        <Input 
+          type="email" 
+          placeholder="Your Email Address" 
+          className="w-full min-w-0 bg-gray-800 border-gray-700 text-white 
+                     placeholder:text-gray-400 text-xs sm:text-sm"
+          required 
+        />
+
+        <div className="w-full min-w-0">
+          <MobileNumberInput />
+        </div>
+
+        <Input 
+          placeholder="Subject (e.g., Artist Booking)" 
+          className="w-full min-w-0 bg-gray-800 border-gray-700 text-white 
+                     placeholder:text-gray-400 text-xs sm:text-sm"
+          required 
+        />
+
+        <Textarea 
+          placeholder="Your Message / Booking Details..." 
+          className="w-full min-w-0 bg-gray-800 border-gray-700 text-white 
+                     placeholder:text-gray-400 h-24 sm:h-32 text-xs sm:text-sm resize-y"
+          required 
+        />
+
+        <Button 
+          type="submit" 
+          className="w-full rounded-lg bg-indigo-500 hover:bg-indigo-600 
+                     text-white font-medium py-2 text-xs sm:text-sm"
+          disabled={loading}
+        >
+          {loading ? "Sending..." : "Send Booking Request"}
+        </Button>
+      </form>
+    </CardContent>
+  </Card>
+</motion.div>
 
   </div>
 </section>
